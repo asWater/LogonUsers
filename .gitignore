@@ -1,0 +1,8 @@
+#Unkown Type
+.DS_Store
+
+#Node packages
+node_modules/
+
+#Design files
+_design/

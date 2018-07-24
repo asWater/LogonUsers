@@ -1,0 +1,84 @@
+﻿{
+	"generalText":
+	{
+		"comUser": "通信ユーザー (C): ",
+		"diaUser": "ダイアログユーザー (A): ",
+		"refUser": "参照ユーザー (L): ",
+		"srvUser": "サービスユーザー (S): ",
+		"sysUser": "システムユーザー (B): "		
+	},
+	"headerArea":
+	{
+		"initialBtn": "システムサマリー",
+		"summaryBtn": "クライアントサマリー",
+		"detailBtn": "ログオンユーザー情報"
+	},
+	"initialArea":
+	{
+		"repoInfo": "ユーザー情報: ",
+		"clientCnt": "全クライアント数: ",
+		"allUsers": "全ユーザー数: ",
+		"logonUsers": "ログオンユーザー数: ",
+		"logonRate": "ログオン率: "
+	},
+	"summaryArea":
+	{
+		"header": "クライアント別の情報、システム ",
+		"recentTitle": "直近の情報: ",
+		"subT_totalUsr": "全ユーザー数: ",
+		"subT_logonUsr": "ログオンユーザー数: ",
+		"subT_lockUsr": "ロックされてるユーザー数: ",
+		"subT_logRate": "ログオン率: ",
+		"graphTitle": "ユーザータイプごとのログオン履歴"
+	},
+	"logonUserTab":
+	{
+		"tableHeader": "ログオンユーザーのピボットテーブル"
+	},
+	"progressBar":
+	{
+		"stat_inProcess": "処理中",
+		"stat_completed": "完了",
+		"stat_error": "エラー",
+		"status": "Status: {{stat}}",
+		"statMsgLoading": "ローディング中...",
+		"statMsgProcData": "データ処理中...",
+		"statMsgStart": "ファイル読み込み開始",
+		"statMsgRead": "ファイル読み込み中",
+		"statMsgParse": "JSON パース中",
+		"statMsgCreateSum": "サマリー作成中",
+		"statMsgFinish": "全ての処理が完了しました",
+		"statMsgJsonErr": "JSON パース中にエラー",
+		"btn_close": "閉じる"
+	},
+	"statTable":
+	{
+		"tdSid": "SID",
+		"tdClient": "クライアント",
+		"tdExeDate": "実行日",
+		"tdUser": "ユーザー名",
+		"tdTaskType": "タスクタイプ",
+		"tdEntryType": "エントリータイプ",
+		"tdTcodeProg": "Tran/Prog",
+		"tdJobName": "ジョブ名",
+		"tdCounter": "カウンター"
+	},
+	"modalWindow":
+	{
+		"statTitle": "ユーザーアクティビティ"
+	},
+	"alert":
+	{
+		"header": "エラー",
+		"noValue": "値がないセルを選択することはできません",
+		"noClient": "合計列のセルを選択することはできません（クライアント情報がありません）"
+	},
+	"accordion":
+	{
+		"sepaGraTitle": "Separate Tables & Pie Charts"
+	},
+	"filterArea":
+	{
+		"placeHolder": "Input a word to search"
+	}
+}

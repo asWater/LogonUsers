@@ -1,0 +1,103 @@
+{
+	"generalText":
+	{
+		"comUser": "Communication Users (C): ",
+		"diaUser": "Dialog Users (A): ",
+		"refUser": "Reference Users (L): ",
+		"srvUser": "Service Users (S): ",
+		"sysUser": "System Users (B): "
+	},
+	"headerArea":
+	{
+		"initialBtn": "Summary of systems",
+		"summaryBtn": "Summary of clients in the system",
+		"detailBtn": "Logon Users Info",
+		"userInfoBtn": "Current User Info"
+	},
+	"initialArea":
+	{
+		"repoInfo": "User Info at ",
+		"clientCnt": "All Clients: ",
+		"allUsers": "All Existing Users: ",
+		"logonUsers": "Logon Users: ",
+		"logonRate": "Logon Rate: "
+	},
+	"summaryArea":
+	{
+		"header": "Each client information of system ",
+		"recentTitle": "Recent information at ",
+		"subT_totalUsr": "Total Users: ",
+		"subT_logonUsr": "Logon Users: ",
+		"subT_lockUsr": "Locked Users: ",
+		"subT_logRate": "Logon Rate: ",
+		"graphTitle": "History of logon users by the user type"
+	},
+	"logonUserTab":
+	{
+		"tableHeader": "Pivot Table of Logon Users"
+	},
+	"progressBar":
+	{
+		"stat_inProcess": "In Process",
+		"stat_completed": "Completed",
+		"stat_error": "Error",
+		"status": "Status: {{stat}}",
+		"statMsgLoading": "Loading Data...",
+		"statMsgProcData": "Processing Data...",
+		"statMsgStart": "Start file reading",
+		"statMsgRead": "Reading File",
+		"statMsgParse": "JSON parsing",
+		"statMsgCreateSum": "Creating Summary",
+		"statMsgFinish": "All processes were finished",
+		"statMsgJsonErr": "Error during JSON Parse",
+		"btn_close": "Close"
+	},
+	"statTable":
+	{
+		"tdSid": "SID",
+		"tdClient": "Client",
+		"tdExeDate": "Date",
+		"tdUser": "User",
+		"tdTaskType": "Task Type",
+		"tdEntryType": "Entry Type",
+		"tdTcodeProg": "Tran/Prog",
+		"tdJobName": "Job Name",
+		"tdCounter": "Counter"
+	},
+	"userInfoTable":
+	{
+		"title": "All User Information",
+		"colMandt": "Client",
+		"colBname": "User",
+		"colUstyp": "User Type",
+		"colClass": "User Group",
+		"colLocnt": "No of failed logon",
+		"colUflag": "User Lock Status",
+		"colAname": "Created By",
+		"colErdat": "Created on",
+		"colTrdat": "Last Logon Date",
+		"colLtime": "Last Logon Time",
+		"colBcda1": "Last PW Change Date",
+		"colPwdchg": "PW Changed Date",
+		"colPwdIni": "PW Initial",
+		"colPwdlock": "PW Locked Date"
+	},
+	"modalWindow":
+	{
+		"statTitle": "User's activities"
+	},
+	"alert":
+	{
+		"header": "Error",
+		"noValue": "Not possible to select the cell which values is null",
+		"noClient": "Not possible to select the cell of total column (No client information)"
+	},
+	"accordion":
+	{
+		"sepaGraTitle": "Separate Tables & Pie Charts"
+	},
+	"filterArea":
+	{
+		"placeHolder": "Input a word to search"
+	}
+}

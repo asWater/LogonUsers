@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> TEST </title>
+    <!-- Test after PC replacement -->
+
+		<!-- Angular -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-animate.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.1/ui-bootstrap-tpls.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.17/angular-filter.min.js"></script>
+	    <!--
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.11.1/angular-translate.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.11.1/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"> </script>
+	    -->
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.15.2/angular-translate.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.15.2/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"> </script>
+
+	    <!-- Jquery Relevant -->
+	    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+	    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+
+		<!-- Pivot Relevant Libraries -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.11.0/pivot.min.js"> </script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.11.0/export_renderers.min.js"> </script>
+		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.1.0/d3_renderers.min.js"> </script> -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.11.0/c3_renderers.min.js"> </script>
+
+		<!-- Moment & Chart relevant -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/angular.chartjs/1.0.0/angular-chart.min.js"></script>
+		
+		<!--  Bootstrap  -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+		<!-- SAP UI5 -->
+		<!-- <script src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"></script> -->
+		<!-- <script src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"></script> -->
+	
+		<!-- My scripts -->
+		<script src="js/myUtil.js"></script>
+		<script src="js/main.js"></script>
+
+	    <!-- ### CSS ### -->
+	    <!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.11.0/pivot.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css">
+		<!-- MY CSS -->
+    	<link rel="stylesheet" type="text/css" href="css/myStyle.css" charset="utf-8">
+  
+  </head>
+  <body>
+  	<div ng-app="usageAnaApp">
+
+  		<!-- Main Container --> 
+		<div class="container" ng-controller="MainCtrl">
+
+			<!-- HEADER -->
+			<div id="headerFixed" class="headerStyle">
+				<!-- If using DIV instead of SPAN, the header area is broken -->
+				<span class="headerStyle" ng-show="showHdrBtns">
+					<div class="headerContents circle"> {{currentSID}} </div>
+					<div class="headerContents"> <button ng-class="{btnPushed: isBtnInitial}" class="btn" ng-click="readInitial()" translate="headerArea.initialBtn"></button></div>
+				    <div class="headerContents"> <button ng-class="{btnPushed: isBtnSummary}" class="btn" ng-click="readSummaryBySID( currentSID )" translate="headerArea.summaryBtn"></button></div>
+				    <div class="headerContents"> <button ng-class="{btnPushed: isBtnDetail}" class="btn" ng-click="readDetail( currentSID )" translate="headerArea.detailBtn"></button></div>
+				    <div class="headerContents"> <button ng-class="{btnPushed: isBtnUserInfo}" class="btn" ng-click="getUserInfo( currentSID )" translate="headerArea.userInfoBtn"></button></div>
+				</span>
+
+				<!-- Language Selection -->
+			    <div class="langSelect btn-group" uib-dropdown ng-show="(!alerts)">
+			        <button class="btn btn-primary" type="button" uib-dropdown-toggle>{{currentLang}} <span class="caret"></span> </button>
+			        <ul class="dropdown-menu langDropDown" uib-dropdown-menu role="menu" aria-labelledby="dropDownLang">
+				        <li class="langList" ng-repeat="(key, value) in languages">
+				          <a ng-click="selectLang(key)">{{value}}</a>
+				        </li>
+			        </ul>
+			    </div>
+			</div>  
+			
+			<!-- INITIAL PAGE: Overview of each system -->
+			<div ng-show="showInit" class="firstSection" >
+				<div class="systemRepo" ng-repeat="result in recentRepoData" ng-click="readSummaryBySID(result.SYSTEMID)">
+					<div class="boxContainer">
+						<div class="repoInfo">
+							<p class="sidTitle"> {{result.SYSTEMID}} </p>
+							<p> {{'initialArea.repoInfo' | translate }} {{result.RECENT_DATE}} </p>
+							<p> {{'initialArea.clientCnt' | translate }} {{result.CLIENT_CNT}} </p>
+							<p> {{'initialArea.allUsers' | translate }} {{result.COM_USER_CNT + result.DIA_USER_CNT + result.REF_USER_CNT + result.SRV_USER_CNT + result.SYS_USER_CNT}}
+							<p> > {{'generalText.comUser' | translate }} {{result.COM_USER_CNT}} </p>
+							<p> > {{'generalText.diaUser' | translate }} {{result.DIA_USER_CNT}} </p>
+							<p> > {{'generalText.refUser' | translate }} {{result.REF_USER_CNT}} </p>
+							<p> > {{'generalText.srvUser' | translate }} {{result.SRV_USER_CNT}} </p>
+							<p> > {{'generalText.sysUser' | translate }} {{result.SYS_USER_CNT}} </p>
+							<p> {{'initialArea.logonUsers' | translate }} {{result.LOGON_USER_CNT}} </p>
+							<p> {{'initialArea.logonRate' | translate }} {{result.LOGON_USER_CNT / ( result.COM_USER_CNT + result.DIA_USER_CNT + result.REF_USER_CNT + result.SRV_USER_CNT + result.SYS_USER_CNT ) * 100 | number:2 }} % </p>
+						</div>
+					  	<div class="repoChart">
+					  		<canvas id="repoLineChart" class="chart chart-line repoChartCanvas" 
+						  		chart-data="recentRepoData[$index].GRAPH_DATA" 
+						  		chart-labels="recentRepoData[$index].HISTORY.DATES"
+						  		chart-colors="repoColors" 
+						  		chart-series="repoSeries" 
+						  		chart-options="repoOptions">
+					  		</canvas>
+				  		</div>
+			  		</div>
+				</div>
+			</div> <!-- End of INITIAL PAGE -->
+
+			<!-- SID summary page by clients -->
+		    <div ng-show="showSummary" class="firstSection">
+		    	<h3 class="textColorMain"> {{'summaryArea.header' | translate}} {{currentSID}}</h3>	
+				<div class="clientRepo" ng-repeat="result in clientSummary">
+					<div class="repoInfo">
+						<p class="sidTitle"> Client: {{result.CLIENT}} </p>
+						<p class="sudTitle"> {{'summaryArea.recentTitle' | translate}} {{result.RECENT_DATE}} </p>
+						<div class="boxContainer">
+							<div class="marginRight2">
+								<p class="fontBold" translate="generalText.comUser"></p>
+								<p> {{'summaryArea.subT_totalUsr' | translate}} {{result.RECENT_COM_USR}} </p>
+								<p> {{'summaryArea.subT_logonUsr' | translate}} {{result.RECENT_COM_USR_LOG}} </p>
+								<p> {{'summaryArea.subT_lockUsr' | translate}} {{result.RECENT_COM_USR_LOCK}} </p>
+								<p> {{'summaryArea.subT_logRate' | translate}} {{ result.RECENT_COM_USR == 0 ? '0.00' : ( result.RECENT_COM_USR_LOG / result.RECENT_COM_USR ) * 100 | number:2 }} % </p>
+							</div>
+							<div class="marginRight2">
+								<p class="fontBold" translate="generalText.diaUser"></p>
+								<p> {{'summaryArea.subT_totalUsr' | translate}} {{result.RECENT_DIA_USR}} </p>
+								<p> {{'summaryArea.subT_logonUsr' | translate}} {{result.RECENT_DIA_USR_LOG}} </p>
+								<p> {{'summaryArea.subT_lockUsr' | translate}} {{result.RECENT_DIA_USR_LOCK}} </p>
+								<p> {{'summaryArea.subT_logRate' | translate}} {{ result.RECENT_DIA_USR == 0 ? '0.00' : ( result.RECENT_DIA_USR_LOG / result.RECENT_DIA_USR ) * 100 | number:2 }} % </p>
+							</div>
+							<div class="marginRight2">
+								<p class="fontBold" translate="generalText.refUser"></p>
+								<p> {{'summaryArea.subT_totalUsr' | translate}} {{result.RECENT_REF_USR}} </p>
+								<p> {{'summaryArea.subT_logonUsr' | translate}} {{result.RECENT_REF_USR_LOG}} </p>
+								<p> {{'summaryArea.subT_lockUsr' | translate}} {{result.RECENT_REF_USR_LOCK}} </p>
+								<p> {{'summaryArea.subT_logRate' | translate}} {{ result.RECENT_REF_USR == 0 ? '0.00' : ( result.RECENT_REF_USR_LOG / result.RECENT_REF_USR ) * 100 | number:2 }} % </p>
+							</div>
+							<div class="marginRight2">
+								<p class="fontBold" translate="generalText.srvUser"></p>
+								<p> {{'summaryArea.subT_totalUsr' | translate}} {{result.RECENT_SRV_USR}} </p>
+								<p> {{'summaryArea.subT_logonUsr' | translate}} {{result.RECENT_SRV_USR_LOG}} </p>
+								<p> {{'summaryArea.subT_lockUsr' | translate}} {{result.RECENT_SRV_USR_LOCK}} </p>
+								<p> {{'summaryArea.subT_logRate' | translate}} {{ result.RECENT_SRV_USR == 0 ? '0.00' : ( result.RECENT_SRV_USR_LOG / result.RECENT_SRV_USR ) * 100 | number:2 }} % </p>
+							</div>
+							<div class="marginRight2">
+								<p class="fontBold" translate="generalText.sysUser"></p>
+								<p> {{'summaryArea.subT_totalUsr' | translate}} {{result.RECENT_SYS_USR}} </p>
+								<p> {{'summaryArea.subT_logonUsr' | translate}} {{result.RECENT_SYS_USR_LOG}} </p>
+								<p> {{'summaryArea.subT_lockUsr' | translate}} {{result.RECENT_SYS_USR_LOCK}} </p>
+								<p> {{'summaryArea.subT_logRate' | translate}} {{ result.RECENT_SYS_USR == 0 ? '0.00' : ( result.RECENT_SYS_USR_LOG / result.RECENT_SYS_USR ) * 100 | number:2 }} % </p>
+							</div>
+						</div>
+					</div>
+					<p class="graphTitle" translate="summaryArea.graphTitle" ></p>
+				  	<div class="repoChart">
+				  		<canvas id="repoLineChart" class="chart chart-line clientChartCanvas" 
+					  		chart-data="clientSummary[$index].GRAPH_DATA" 
+					  		chart-labels="clientSummary[$index].GRAPH_LABEL"
+					  		chart-colors="clientGraphColors" 
+					  		chart-series="clientGraphSeries" 
+					  		chart-options="clientGraphOptions">
+				  		</canvas>
+			  		</div>
+		  		</div>
+		    </div> <!-- End of SUMMARY PAGE -->
+
+			<!-- Logon User Page -->
+		    <div  ng-show="showDetail" class="firstSection">
+				<!-- Free selection for Summary data -->
+				<h3 class="largeSpace textColorMain" translate="logonUserTab.tableHeader"></h3>
+				<div class="alertMsg" uib-alert ng-repeat="alert in alertMessages" ng-class="'alert-' + alert.type" close="closeAlert($index)">{{alert.msg}}</div>
+				<div class="pivotTable">
+					<div id="logonUserTab" class="pTab"></div>
+				</div>
+
+			</div> <!-- End of Detail Page -->
+
+			<!-- User Information Page -->
+		    <div  ng-show="showUserInfo" class="firstSection">
+				<h3 class="largeSpace textColorMain" translate="userInfoTable.title"></h3>
+			  	<!-- Filter area -->
+			  	<form>
+			    	<div class="form-group">
+			      		<div class="input-group">
+			        		<div class="input-group-addon"><i class="fa fa-search"></i></div>
+			        		<input type="text" class="form-control" placeholder="{{'filterArea.placeHolder' | translate }}" ng-model="summarySearchObj">
+			      		</div>      
+			    	</div>
+			  	</form>
+			    <!-- Table Area -->
+			    <table name="userInfoTable" class="table table-bordered tableRound fontSize11px">
+			    	<tr class="tableHeader">
+			    		<td> 
+			    			<a href="#userInfoTable" ng-click="summarySortType = 'MANDT'; summarySortReverse = !summarySortReverse"> 
+			    				{{'userInfoTable.colMandt' | translate }} 
+			    				<span ng-show="summarySortType == 'MANDT' && !summarySortReverse" class="fa fa-caret-down caretColorRed"></span>
+			    				<span ng-show="summarySortType == 'MANDT' && summarySortReverse" class="fa fa-caret-up caretColorRed"></span>  
+			    			</a> 
+			    		</td>
+			    		<td> 
+			    			<a href="#userInfoTable" ng-click="summarySortType = 'BNAME'; summarySortReverse = !summarySortReverse"> 
+			    				{{'userInfoTable.colBname' | translate }} 
+			    				<span ng-show="summarySortType == 'BNAME' && !summarySortReverse" class="fa fa-caret-down caretColorRed"></span>
+			    				<span ng-show="summarySortType == 'BNAME' && summarySortReverse" class="fa fa-caret-up caretColorRed"></span>  
+			    			</a> 
+			    		</td> 
+			    		<td> 
+			    			<a href="#userInfoTable" ng-click="summarySortType = 'USTYP'; summarySortReverse = !summarySortReverse"> 
+			    				{{'userInfoTable.colUstyp' | translate }}
+			    				<span ng-show="summarySortType == 'USTYP' && !summarySortReverse" class="fa fa-caret-down caretColorRed"></span>
+			    				<span ng-show="summarySortType == 'USTYP' && summarySortReverse" class="fa fa-caret-up caretColorRed"></span>  
+			    			</a> 
+			    		</td> 
+			    		<td> 
+			    			<a href="#userInfoTable" ng-click="summarySortType = 'CLASS'; summarySortReverse = !summarySortReverse"> 
+			    				{{'userInfoTable.colClass' | translate }}
+			    				<span ng-show="summarySortType == 'CLASS' && !summarySortReverse" class="fa fa-caret-down caretColorRed"></span>
+			    				<span ng-show="summarySortType == 'CLASS' && summarySortReverse" class="fa fa-caret-up caretColorRed"></span>  			    				
+			    			</a> 
+			    		</td> 
+			    		<td> 
+			    			<a href="#userInfoTable" ng-click="summarySortType = 'LOCNT'; summarySortReverse = !summarySortReverse"> 
+			    				{{'userInfoTable.colLocnt' | translate }}
+			    				<span ng-show="summarySortType == 'LOCNT' && !summarySortReverse" class="fa fa-caret-down caretColorRed"></span>
+			    				<span ng-show="summarySortType == 'LOCNT' && summarySortReverse" class="fa fa-caret-up caretColorRed"></span>  	
+			    			</a> 
+			    		</td> 
+			    		<td> 
+			    			<a href="#userInfoTable" ng-click="summarySortType = 'UFLAG'; summarySortReverse = !summarySortReverse"> 
+			    				{{'userInfoTable.colUflag' | translate }}
+			    				<span ng-show="summarySortType == 'UFLAG' && !summarySortReverse" class="fa fa-caret-down caretColorRed"></span>
+			    				<span ng-show="summarySortType == 'UFLAG' && summarySortReverse" class="fa fa-caret-up caretColorRed"></span>  
+			    			</a> 
+			    		</td> 
+			    		<td> 
+			    			<a href="#userInfoTable" ng-click="summarySortType = 'ANAME'; summarySortReverse = !summarySortReverse"> 
+			    				{{'userInfoTable.colAname' | translate }}
+			    				<span ng-show="summarySortType == 'ANAME' && !summarySortReverse" class="fa fa-caret-down caretColorRed"></span>
+			    				<span ng-show="summarySortType == 'ANAME' && summarySortReverse" class="fa fa-caret-up caretColorRed"></span>  
+			    			</a> 
+			    		</td> 
+			    		<td> 
+			    			<a href="#userInfoTable" ng-click="summarySortType = 'ERDAT'; summarySortReverse = !summarySortReverse"> 
+			    				{{'userInfoTable.colErdat' | translate }}
+			    				<span ng-show="summarySortType == 'ERDAT' && !summarySortReverse" class="fa fa-caret-down caretColorRed"></span>
+			    				<span ng-show="summarySortType == 'ERDAT' && summarySortReverse" class="fa fa-caret-up caretColorRed"></span>  
+			    			</a> 
+			    		</td> 
+			    		<td> 
+			    			<a href="#userInfoTable" ng-click="summarySortType = 'TRDAT'; summarySortReverse = !summarySortReverse"> 
+			    				{{'userInfoTable.colTrdat' | translate }}
+			    				<span ng-show="summarySortType == 'TRDAT' && !summarySortReverse" class="fa fa-caret-down caretColorRed"></span>
+			    				<span ng-show="summarySortType == 'TRDAT' && summarySortReverse" class="fa fa-caret-up caretColorRed"></span>  
+			    			</a> 
+			    		</td> 
+			    		<td> 
+			    			<a href="#userInfoTable" ng-click="summarySortType = 'LTIME'; summarySortReverse = !summarySortReverse"> 
+			    				{{'userInfoTable.colLtime' | translate }}
+			    				<span ng-show="summarySortType == 'LTIME' && !summarySortReverse" class="fa fa-caret-down caretColorRed"></span>
+			    				<span ng-show="summarySortType == 'LTIME' && summarySortReverse" class="fa fa-caret-up caretColorRed"></span>  
+			    			</a> 
+			    		</td> 
+			    		<td> 
+			    			<a href="#userInfoTable" ng-click="summarySortType = 'BCDA1'; summarySortReverse = !summarySortReverse"> 
+			    				{{'userInfoTable.colBcda1' | translate }}
+			    				<span ng-show="summarySortType == 'BCDA1' && !summarySortReverse" class="fa fa-caret-down caretColorRed"></span>
+			    				<span ng-show="summarySortType == 'BCDA1' && summarySortReverse" class="fa fa-caret-up caretColorRed"></span>  
+			    			</a> 
+			    		</td> 
+			    		<td> 
+			    			<a href="#userInfoTable" ng-click="summarySortType = 'PWDCHGDATE'; summarySortReverse = !summarySortReverse"> 
+			    				{{'userInfoTable.colPwdchg' | translate }}
+			    				<span ng-show="summarySortType == 'PWDCHGDATE' && !summarySortReverse" class="fa fa-caret-down caretColorRed"></span>
+			    				<span ng-show="summarySortType == 'PWDCHGDATE' && summarySortReverse" class="fa fa-caret-up caretColorRed"></span>  
+			    			</a> 
+			    		</td> 
+			    		<td> 
+			    			<a href="#userInfoTable" ng-click="summarySortType = 'PWDINITIAL'; summarySortReverse = !summarySortReverse"> 
+			    				{{'userInfoTable.colPwdIni' | translate }}
+			    				<span ng-show="summarySortType == 'PWDINITIAL' && !summarySortReverse" class="fa fa-caret-down caretColorRed"></span>
+			    				<span ng-show="summarySortType == 'PWDINITIAL' && summarySortReverse" class="fa fa-caret-up caretColorRed"></span>  
+			    			</a> 
+			    		</td> 
+			    		<td> 
+			    			<a href="#userInfoTable" ng-click="summarySortType = 'PWDLOCKDATE'; summarySortReverse = !summarySortReverse"> 
+			    				{{'userInfoTable.colPwdlock' | translate }}
+			    				<span ng-show="summarySortType == 'PWDLOCKDATE' && !summarySortReverse" class="fa fa-caret-down caretColorRed"></span>
+			    				<span ng-show="summarySortType == 'PWDLOCKDATE' && summarySortReverse" class="fa fa-caret-up caretColorRed"></span>  
+			    			</a> 
+			    		</td> 
+			    	</tr>
+			        <tr ng-repeat="result in userInfoData | orderBy:summarySortType:summarySortReverse | filter:summarySearchObj" ng-class="{'success': result.MANDT == 'X'}">
+						<td> {{result.MANDT}} </td>
+						<td> {{result.BNAME}} </td> 
+						<td> {{result.USTYP}} </td>
+						<td> {{result.CLASS}} </td>
+						<td> {{result.LOCNT}} </td>
+						<td> {{result.UFLAG}} </td>
+						<td> {{result.ANAME}} </td>
+						<td> {{result.ERDAT}} </td>
+						<td> {{result.TRDAT}} </td>
+						<td> {{result.LTIME}} </td>
+						<td> {{result.BCDA1}} </td>
+						<td> {{result.PWDCHGDATE}} </td>
+						<td> {{result.PWDINITIAL}} </td>
+						<td> {{result.PWDLOCKDATE}} </td>
+			        </tr>
+			    </table>
+
+			</div> <!-- End of User Information Page -->
+
+			<!-- Modal for Alert Message -->
+			<script type="text/ng-template" id="alertMsg">
+			  <div class="modal-header">
+				  <h class="statTabHeader" translate="alert.header"></h>
+			  </div>
+			  <div class="modal-body">
+			      <div class="alertMsg" uib-alert ng-repeat="alert in alertMessages" ng-class="'alert-' + alert.type">{{alert.msg}}</div>
+			  </div>
+			  <div class="modal-footer">
+			      <button type="button" class="btn btn-info" ng-click="$close()" translate="progressBar.btn_close"></button>
+			  </div>
+			</script><!-- Modal for Alert Message -->
+
+			<!-- Modal for inProgress -->
+			<script type="text/ng-template" id="progressBar">
+			  <div class="modal-header">
+			     <h class="header4">
+			        <span ng-show="remotingProgress < 100" translate="progressBar.stat_inProcess"></span>
+			        <span ng-show="remotingProgress === 100 && !pbError" translate="progressBar.stat_completed"></span>
+			        <span ng-show="remotingProgress === 100 && pbError" translate="progressBar.stat_error"></span>
+			     </h>
+			  </div>
+			  <div class="modal-body">
+			      <div translate="progressBar.status" translate-values="{ stat: remotingStatus }"></div>
+			      <uib-progressbar ng-class="(remotingProgress < 100) ? 'progress-striped active' : 'progress'" value="remotingProgress" type="{{pbType}}"></uib-progressbar>
+			  </div>
+			  <div class="modal-footer" ng-show="remotingProgress == 100 && pbError">
+			      <button type="button" class="btn btn-info" ng-click="$close()" translate="progressBar.btn_close"></button>
+			  </div>
+			</script><!-- Modal for inProgress-->
+
+			<!-- Modal window for STAT data -->
+			<script type="text/ng-template" id="statInfo">
+			  	<div class="modalArea">
+				  <div class="modal-header">
+				  	<h class="statTabHeader" translate="modalWindow.statTitle"></h>
+				  </div>
+				  <div class="modal-body">
+				  	<table class="table table-bordered tableRound">
+						<tr class="tableHeader">
+				    		<td translate="statTable.tdSid"></td>
+				    		<td translate="statTable.tdClient"></td>
+				    		<td translate="statTable.tdExeDate"></td>
+				    		<td translate="statTable.tdUser"></td>
+				    		<td translate="statTable.tdTaskType"></td>
+				    		<td translate="statTable.tdEntryType"></td>
+				    		<td translate="statTable.tdTcodeProg"></td>
+				    		<td translate="statTable.tdJobName"></td>
+				    		<td translate="statTable.tdCounter"></td>
+				    	</tr>
+				  		<tr ng-repeat="data in statData">
+				  			<td> {{data.SID}} </td>
+				  			<td> {{data.MANDT}} </td>
+				  			<td> {{data.EXEDATE}} </td>
+				  			<td> {{data.ACCOUNT}} </td>
+				  			<td> {{data.TASKTYPE_TEXT}} </td>
+				  			<td> {{data.ENTRY_TYPE}} </td>
+				  			<td> {{data.TCODE_PROG}} </td>
+				  			<td> {{data.JOBNAME}} </td>
+				  			<td> {{data.COUNTER}} </td>
+				  		</tr>
+				  	</table>
+				  </div>
+				  <div class="modal-footer">
+				  	<button type="button" class="btn btn-info" ng-click="$close()" translate="progressBar.btn_close"></button>
+				  </div>
+				</div>
+			</script><!-- Modal window for STAT data -->
+
+		</div> <!-- End of Main Container --> 
+
+	</div>
+  
+  </body>
+</html>

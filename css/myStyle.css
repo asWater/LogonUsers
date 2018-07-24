@@ -1,0 +1,666 @@
+* {
+  font-family: verdana, Meiryo, sans-serif;
+  background-color: #FFF;
+  /*
+  font-size  : 12pt;
+  margin: 2px;
+  */
+}
+
+/*--------------------------------------
+  General Part
+----------------------------------------*/
+.textColorMain { 
+	color: steelblue; 
+	font-weight: bolder;
+}
+
+/*--------------------------------------
+  Header Part
+----------------------------------------*/
+div#headerFixed {
+    position: fixed;            /* ヘッダーの固定 */
+    z-index: 10;
+    top: 0px;                   /* 位置(上0px) */
+    left: 0px;                  /* 位置(右0px) */
+    width: 100%;                /* 横幅100%　*/
+    height: 100px;              /* 縦幅140px */
+}
+
+.headerStyle {
+	background-color: whitesmoke;
+	border: 2px solid #dcdcdc;
+	line-height: 100px; /* 子要素の vertical-align:middle; を有効にするために必要 */
+}
+
+span.headerStyle {
+	border: none;
+}
+
+.headerContents {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: normal; /* vertical-align:middle; を有効にするために必要 */
+}
+
+.headerContents:first-child {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.circle {
+	border: solid 4px;
+	border-color: royalblue;
+	border-radius: 50%;
+	padding: 20px;
+	font-weight: bold;
+	color: royalblue;
+	background-color: gold;
+}
+
+div.langSelect {
+	float: right;
+	margin-top: 30px;
+	margin-right: 15px;
+}
+
+div.langSelect > .btn:first-child {
+	background-color: dodgerblue;
+	border-color: dodgerblue;
+}
+
+div.langSelect > .btn:first-child:hover {
+	color: white;
+	background-color: steelblue;
+	border-color: steelblue;
+}
+
+div.langSelect > .btn:first-child:active {
+	background-color: steelblue;
+	border-color: steelblue;
+}
+
+.btn .caret {
+	background-color: transparent;
+}
+
+.langList {
+	cursor: pointer;
+}
+
+/*<<< End of Header Part >>>*/
+
+div #dropArea, p.dropText {
+	background-color: skyblue;
+}
+
+
+div #dropArea {
+	height: 80%;
+	width: 80%;
+	border-radius: 5px;
+	top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin: auto;
+	border: dotted 15px steelblue;
+	border-radius: 5px;
+}
+
+p.dropText {
+	font-size: 500%;
+ 	text-align: center;
+ 	vertical-align: middle;
+ 	margin-top: 20%;
+    color: steelblue;
+    font-weight: bolder;
+    opacity: 1;
+}
+
+.alertMsg div, .alertMsg span {
+	background-color: #f2dede;
+}
+
+div #summary {
+	margin: 10px;
+	padding: 10px;
+}
+
+.titleHeader {
+	margin-top: 3%;
+	text-align: center;
+	color: maroon;
+}
+
+.titleString {
+	margin: 0%;
+	font-weight: bolder;
+}
+
+.inlineDisp { display: inline; }
+
+.inlineBlock { display: inline-block;}
+
+.boxContainer {
+	display: flex;
+	display: -moz-flex;
+	display: -o-flex;
+	display: -webkit-flex;
+	display: -ms-flex;
+	flex-direction: row;
+	-moz-flex-direction: row;
+	-o-flex-direction: row;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+}
+
+.titleStrLarge {
+	font-size: 250%;
+}
+
+.paragraph1 {
+	background-color: yellowgreen;
+	height: 80px;
+	font-size: 100%;
+	vertical-align: middle;
+}
+
+.paragraph2 {
+	height: 50px;
+	vertical-align: middle;
+	font-size: 20px;
+	background-color: orange;
+	margin-top: 50px;
+}
+
+.firstSection { margin-top: 110px; }
+
+.forSpace {
+	border-color: white;
+	background-color: white;
+	clear: both;
+}
+
+.littleSpace { margin-top: -3%; }
+
+.largeSpace { margin-top: 5%; }
+
+.header4 {
+	font-weight: bold;
+	color: royalblue;
+}
+
+.usedArea {
+	color: #2E8B57 !important; /* Sea Green */
+}
+
+.unUsedArea {
+	color: #CD5C5C !important; /* Indian Red */
+}
+
+.caretColorRed {
+	color: red !important;
+	background-color: rgba(255, 255, 255, 0);
+	font-size: 14px;
+	margin-left: 2px;
+}
+
+.pieSummary{
+	width: 70%;
+	height: 70%;
+}
+
+/*--------------------------------------
+  Initial Page
+----------------------------------------*/
+.systemRepo, .clientRepo {
+	padding: 10px;
+	margin-bottom: 10px;
+	border: 5px solid #333333;
+	border-radius: 10px;
+	border-color: steelblue;
+	color: steelblue;
+	transition: background-color 0.5s;
+}
+.systemRepo:hover {
+	background-color: steelblue;
+	transition: background-color 1s;
+}
+
+.sidTitle {
+	font-size: 150%;
+	font-weight: bold;
+	margin-bottom: 2%;
+}
+
+.sudTitle {
+	font-weight: bold;
+	margin-bottom: 2%;
+}
+
+.graphTitle {
+	font-weight: bold;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+.wdynTitle {
+	color: #5f9ea0;
+}
+
+.wdyaTitle {
+	color: #ffa500;
+}
+
+.repoInfo{
+	margin-left: 2%;
+	margin-right: 5%;
+}
+
+.repoChartCanvas{
+	width: 650px !important; 
+	height: 250px !important;
+	margin-top: 2%;
+}
+
+/*--------------------------------------
+  Summary Page
+----------------------------------------*/
+
+.marginRight2{
+	margin-right: 2%;
+}
+
+.fontBold{
+	font-weight: bold;
+}
+
+.clientChartCanvas{
+	height: 350px !important;
+	margin-top: 2%;
+}
+
+/*--------------------------------------
+  Accordion Part
+----------------------------------------*/
+.panel-title, .panel-title * {
+	background-color: inherit;
+	font-weight: bold;
+	color: royalblue;
+}
+
+/*
+.glyphicon {
+	position: static;
+}
+*/
+
+/*--------------------------------------
+  Filter Part
+----------------------------------------*/
+.input-group-addon {
+	background-color: deepskyblue;
+}
+
+.fa-search {
+	background-color: rgba(55, 55, 55, 0);
+}
+
+/*-------------------------------------
+   Button Relevant
+--------------------------------------*/
+/*
+.btn-primary
+{
+	background-color: indianred;
+	border-color: indianred;
+}
+*/
+
+/*
+.btn-primary.active
+{
+	background-color: firebrick;
+	border-color: firebrick;
+	color: gold;
+}
+
+.btn-primary:hover, .btn-primary.active:hover
+{
+	background-color: darkred;
+	border-color: darkred;
+	color: gold;
+}
+*/
+
+.btn {
+	background-color: royalblue;
+	border-color: royalblue;
+	color: white;
+}
+
+.btn:focus, .btn:hover {
+	outline: none;
+	color: gold;
+}
+
+.btn.active, .button.active,
+.btn:active, .button:active {
+	outline: none;
+}
+
+.btnPushed {
+	outline: none;
+	background-color: darkred;
+	border-color: darkred;
+	color: gold;
+}
+
+/*
+.btn.btn-primary.ng-untouched.ng-valid.ng-not-empty.ng-dirty:active,
+.btn.btn-primary.ng-pristine.ng-untouched.ng-valid.ng-not-empty:active,
+.button:active,
+.btn:active, .btn.active:active,
+.btn-primary:active, .btn-primary.active:active
+{
+	background-color: darkred;
+	border-color: darkred;
+	color: red;
+}
+*/
+
+/*-------------------------------------
+   TABLE & Graph Relevant
+--------------------------------------*/
+
+select.pvtRenderer {
+	border-radius: 5px;
+}
+
+.noCntroller td.pvtVals, 
+.noCntroller td.pvtAxisContainer {
+	display: none;
+}
+
+div.tableChart {
+	overflow: scroll;
+	margin-top: 50px;
+}
+
+div.tabCharCross {
+	margin-top: 20px;
+}
+
+div.tableChart:before, div.tableChart:after, .pivotTable:after {
+	content: "";
+	display: table;
+}
+
+div.tableChart:after, .pivotTable:after {
+	clear: both;
+}
+
+div.pTab, div.pGraph {
+	float: left;
+}
+
+div.pGraph {
+	margin-left: 30px;
+}
+
+.tableHeader, .paragraph1, .paragraph2 {
+	border-radius: 5px;
+    padding: 5px;
+	font-weight: bolder;
+    text-align: center;
+	color: #fff;
+}
+
+.tableHeader td,
+table.pvtTable thead tr th {
+	background-color: steelblue;
+}
+
+.tableHeader a {
+	color: #fff;
+}
+
+.tabRowHeader {
+	font-weight: bold;
+	color: steelblue;
+}
+
+td.cellCenter {
+	text-align: center;
+	vertical-align: middle !important;
+}
+
+table.pvtTable tbody tr th, table.pvtTable thead tr th
+{
+    padding: 5px;
+	font-weight: bolder;
+	color: #fff;
+}
+
+table.pvtTable thead tr th {
+	padding: 10px;
+}
+
+table.pvtTable .pvtRowLabel {
+	color: steelblue;
+	background-color: #FFF;
+}
+
+table.pvtTable .pvtTotalLabel {
+	background-color: steelblue;
+	text-align: center;
+}
+
+#logonUserTab .pvtVal {
+	cursor: pointer;
+}
+
+.pvtTotal {
+	font-weight: normal;
+}
+
+.pvtAttr, .pvtCheckContainer, .fontSize10px {
+	font-size: 10px;
+}
+
+.fontSize11px {
+	font-size: 11px;
+}
+
+.pvtFilterBox, .pvtRenderer, .pvtAggregator, .pvtAttrDropdown {
+	font-size: 12px;
+}
+
+.ui-sortable-handle {
+	background-color: rgba(255, 255, 255, 0);
+}
+
+table.pvtTable {
+	border-collapse: separate;
+}
+
+div #changeCategoryTab .pvtRowLabel {
+	text-align: left;
+}
+
+
+.usedSumTab th.pvtRowLabel {
+	color: #2E8B57 !important; /* Sea Green */
+}
+
+.notUsedSumTab th.pvtRowLabel {
+	color: #CD5C5C !important; /* Indian Red */
+}
+
+
+.multiPivots {
+	display: flex;
+}
+
+.multiPivots div:nth-of-type(2) {
+	margin-left: 100px;
+}
+
+
+.tableRound, .pvtTable {
+  /*
+  border-width: 2px;
+  border-color: steelblue;
+  border-style: solid;
+  */
+  border-spacing: 0;
+  border-collapse: separate;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+       -o-border-radius: 5px;
+          border-radius: 5px;
+  /* box-shadow: 0 1px 1px #CCC; */ 
+}
+
+/* -----------------------
+  左上角丸　最初の行の最初のセル
+----------------------- */
+.tableRound tr:first-child th:first-child,
+.tableRound tr:first-child td:first-child {
+    -webkit-border-radius: 5px 0 0 0;
+       -moz-border-radius: 5px 0 0 0;
+         -o-border-radius: 5px 0 0 0;
+            border-radius: 5px 0 0 0;
+}
+/* -----------------------
+  右上角丸　最初の行の最後のセル
+----------------------- */
+.tableRound tr:first-child th:last-child,
+.tableRound tr:first-child td:last-child {
+    -webkit-border-radius: 0 5px 0 0;
+       -moz-border-radius: 0 5px 0 0;
+         -o-border-radius: 0 5px 0 0;
+            border-radius: 0 5px 0 0;
+}
+/* -----------------------
+  左下角丸　最後の行の最初のセル
+----------------------- */
+.tableRound tr:last-child th:first-child,
+.tableRound tr:last-child td:first-child {
+    -webkit-border-radius: 0 0 0 5px;
+       -moz-border-radius: 0 0 0 5px;
+         -o-border-radius: 0 0 0 5px;
+            border-radius: 0 0 0 5px;
+}
+/* -----------------------
+  右下角丸　最後の行の最後のセル
+----------------------- */
+.tableRound tr:last-child th:last-child,
+.tableRound tr:last-child td:last-child {
+    -webkit-border-radius: 0 0 5px 0;
+       -moz-border-radius: 0 0 5px 0;
+         -o-border-radius: 0 0 5px 0;
+            border-radius: 0 0 5px 0;
+}
+/* --------------------------------------------
+  thaed,tbodyを使う場合の設定
+-------------------------------------------- */
+/*
+.tableRound thead th {background:#e3dcd5;}
+.tableRound thead+tbody th {background:#f4ede6;}
+*/
+.pvtTable tbody th {text-align:center;}/*IE*/
+/* -----------------------
+  左上角丸 thead内　最初の行の最初のセル
+----------------------- */
+.pvtTable thead tr:first-child th:first-child,
+.pvtTable thead tr:first-child td:first-child {
+    -webkit-border-radius: 5px 0 0 0;
+       -moz-border-radius: 5px 0 0 0;
+         -o-border-radius: 5px 0 0 0;
+            border-radius: 5px 0 0 0;
+}
+/* -----------------------
+  右上角丸 thead内　最初の行の最後のセル
+----------------------- */
+.pvtTable thead tr:first-child th:last-child,
+.pvtTable thead tr:first-child td:last-child {
+    -webkit-border-radius: 0 5px 0 0;
+       -moz-border-radius: 0 5px 0 0;
+         -o-border-radius: 0 5px 0 0;
+            border-radius: 0 5px 0 0;
+}
+/* -----------------------
+  角丸なし　thaedの後のtbody 最初の行の最初のセル
+  角丸なし　thaedの後のtbody 最初の行の最後のセル
+----------------------- */
+.pvtTable thead+tbody tr:first-child th:first-child,
+.pvtTable thead+tbody tr:first-child td:first-child,
+.pvtTable thead+tbody tr:first-child th:last-child,
+.pvtTable thead+tbody tr:first-child td:last-child {
+    -webkit-border-radius:0px;
+       -moz-border-radius:0px;
+         -o-border-radius:0px;
+            border-radius:0px;
+}
+/* -----------------------
+  左下角丸　thaedの後のtbody 最後の行の最初のセル
+----------------------- */
+.pvtTable thead+tbody tr:last-child th:first-child,
+.pvtTable thead+tbody tr:last-child td:first-child {
+    -webkit-border-radius: 0 0 0 5px;
+       -moz-border-radius: 0 0 0 5px;
+         -o-border-radius: 0 0 0 5px;
+            border-radius: 0 0 0 5px;
+}
+/* -----------------------
+  右下角丸　thaedの後のtbody 最後の行の最後のセル
+----------------------- */
+.pvtTable thead+tbody tr:last-child th:last-child,
+.pvtTable thead+tbody tr:last-child td:last-child {
+    -webkit-border-radius: 0 0 5px 0;
+       -moz-border-radius: 0 0 5px 0;
+         -o-border-radius: 0 0 5px 0;
+            border-radius: 0 0 5px 0;
+}
+
+/*-------------------------------------
+   Modal Window Relevant
+--------------------------------------*/
+.modalStatWindow .modal-dialog{
+	width: 90%;
+}
+
+.statTabHeader {
+	color: steelblue;
+	font-weight: bold;
+	font-size: 15pt;
+}
+
+.modal-body td{
+	font-size: 9pt;
+}
+
+
+/*-------------------------------------
+   BLINK Relevant
+--------------------------------------*/
+.blinking {
+	-webkit-animation:blink 1.0s ease-in-out infinite alternate;
+    -moz-animation:blink 1.0s ease-in-out infinite alternate;
+    animation:blink 1.0s ease-in-out infinite alternate;
+}
+@-webkit-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-moz-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
