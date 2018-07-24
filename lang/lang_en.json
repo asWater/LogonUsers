@@ -66,7 +66,7 @@
 	},
 	"userInfoTable":
 	{
-		"title": "All User Information",
+		"title": "All User Information in {{sid}}",
 		"colMandt": "Client",
 		"colBname": "User",
 		"colUstyp": "User Type",

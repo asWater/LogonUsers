@@ -224,6 +224,11 @@ div #summary {
 	color: steelblue;
 	transition: background-color 0.5s;
 }
+
+.systemRepo {
+	cursor: pointer;
+}
+
 .systemRepo:hover {
 	background-color: steelblue;
 	transition: background-color 1s;

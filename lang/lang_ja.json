@@ -11,7 +11,8 @@
 	{
 		"initialBtn": "システムサマリー",
 		"summaryBtn": "クライアントサマリー",
-		"detailBtn": "ログオンユーザー情報"
+		"detailBtn": "ログオンユーザー情報",
+		"userInfoBtn": "現在のユーザ情報"
 	},
 	"initialArea":
 	{
@@ -62,6 +63,24 @@
 		"tdTcodeProg": "Tran/Prog",
 		"tdJobName": "ジョブ名",
 		"tdCounter": "カウンター"
+	},
+	"userInfoTable":
+	{
+		"title": "{{sid}} に存在する全ユーザー情報",
+		"colMandt": "クライアント",
+		"colBname": "ユーザー",
+		"colUstyp": "ユーザータイプ",
+		"colClass": "ユーザーグループ",
+		"colLocnt": "ログオン失敗数",
+		"colUflag": "ロックステータス",
+		"colAname": "作成者",
+		"colErdat": "作成日",
+		"colTrdat": "最終ログオン日",
+		"colLtime": "最終ログオン時間",
+		"colBcda1": "最終パスワード変更日",
+		"colPwdchg": "パスワード変更日",
+		"colPwdIni": "イニシャルパスワード",
+		"colPwdlock": "パスワードロック日"
 	},
 	"modalWindow":
 	{
